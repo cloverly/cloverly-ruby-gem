@@ -7,6 +7,8 @@ require './lib/cloverly'
 
 require 'rspec/matchers'
 
+Dotenv.load
+
 RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
