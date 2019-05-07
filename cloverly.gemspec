@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
   s.name        = 'cloverly'
   s.version     = '0.0.1'
   s.date        = '2019-05-07'
-  s.summary     = "Hola!"
-  s.description = "Interact with the Cloverly Carbon Offset API"
+  s.summary     = "Ruby library for interaciton with Cloverly API"
+  s.description = "Cloverly API powers API offsets via an API"
   s.authors     = ["Chris Winslett"]
   s.email       = 'chris@cloverly.com'
   s.files       = ["lib/cloverly.rb"]

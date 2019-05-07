@@ -4,6 +4,28 @@ require 'json'
 class Cloverly
   attr_reader :api_key
 
+  class << self
+    def default=(cloverly)
+      @@default = cloverly
+    end
+
+    def default
+      @@default
+    end
+
+    def account
+      Cloverly::Account.parse(default, default.get('/2019-03-beta/account'))
+    end
+
+    def offset(type, args = {})
+      Cloverly::Estimate.parse(default, default.post("/2019-03-beta/estimates/#{type}", args))
+    end
+
+    def offset!(type, args = {})
+      Cloverly::Purchase.parse(default, default.post("/2019-03-beta/purchases/#{type}", args))
+    end
+  end
+
   def initialize(api_key)
     @api_key = api_key
   end

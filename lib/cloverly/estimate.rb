@@ -4,4 +4,10 @@ class Cloverly::Estimate
   def purchase!
     Cloverly::Purchase.parse(@cloverly_instance, @cloverly_instance.post("/2019-03-beta/purchases", {estimate_slug: self.slug}))
   end
+
+  def self.retrieve(cloverly_instance = nil, slug)
+    cloverly_instance ||= Cloverly.default
+    Cloverly::Estimate.parse(cloverly_instance, cloverly_instance.get("/2019-03-beta/estimates/#{slug}"))
+  end
+
 end
