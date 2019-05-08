@@ -4,6 +4,10 @@ Cloverly is an API for carbon offsets.  Cloverly powers the ability to
 "green" every day transaction with carbon offsets.  Many customers use
 it to offer green shipping to their customers.
 
+# Bugs
+
+Please report issues to this repository if you find bugs. Thank you!
+
 # Signup & Install
 
 Sign up for the Cloverly API at https://cloverly.com
