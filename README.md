@@ -57,15 +57,6 @@ cloverly_two.estimate_offset("shipping", {distance: {value: 15, units: "miles"},
 
 ### Purchasing offsets
 
-**Direct**
-```
-# with default
-Cloverly::Purchase.electricity({electricity: {value: 15, units: "watts"}})
-
-# without default
-cloverly.offset("electricity", {electricity: {value: 15, units: "watts"}})
-```
-
 **Shipping**
 ```
 # with default
@@ -103,15 +94,6 @@ cloverly.offset("currency", {currency: {value: 3.57, unit: "usd"}})
 ```
 
 ### Estimating Offsets
-
-**Direct**
-```
-# with default
-Cloverly::Estimate.electricity({electricity: {value: 15, units: "watts"}})
-
-# without default
-cloverly.estimate_offset("electricity", {electricity: {value: 15, units: "watts"}})
-```
 
 **Shipping**
 ```
