@@ -17,11 +17,11 @@ class Cloverly
       Cloverly::Account.parse(default, default.get('/2019-03-beta/account'))
     end
 
-    def offset(type, args = {})
+    def estimate_offset(type, args = {})
       Cloverly::Estimate.parse(default, default.post("/2019-03-beta/estimates/#{type}", args))
     end
 
-    def offset!(type, args = {})
+    def offset(type, args = {})
       Cloverly::Purchase.parse(default, default.post("/2019-03-beta/purchases/#{type}", args))
     end
   end
@@ -34,11 +34,11 @@ class Cloverly
     Cloverly::Account.parse(self, get('/2019-03-beta/account'))
   end
 
-  def offset(type, args = {})
+  def estimate_offset(type, args = {})
     Cloverly::Estimate.parse(self, post("/2019-03-beta/estimates/#{type}", args))
   end
 
-  def offset!(type, args = {})
+  def offset(type, args = {})
     Cloverly::Purchase.parse(self, post("/2019-03-beta/purchases/#{type}", args))
   end
 
@@ -68,7 +68,23 @@ class Cloverly
 
     json_response = JSON.parse(response.body)
 
-    if json_response["error"].nil?
+    if json_response.is_a?(Array) || json_response["error"].nil?
+      json_response
+    else
+      raise Cloverly::Error.new(json_response["error"])
+    end
+  end
+
+  def delete(path)
+    response = conn.delete do |req|
+      req.url path
+      req.headers['Content-Type'] = 'application/json'
+      req.headers['Authorization'] = "Bearer #{api_key}"
+    end
+
+    json_response = JSON.parse(response.body)
+
+    if json_response.is_a?(Array) || json_response["error"].nil?
       json_response
     else
       raise Cloverly::Error.new(json_response["error"])
@@ -86,3 +102,4 @@ require_relative './cloverly/error'
 require_relative './cloverly/account'
 require_relative './cloverly/estimate'
 require_relative './cloverly/purchase'
+require_relative './cloverly/source'

@@ -1,17 +1,17 @@
 Gem::Specification.new do |s|
   s.name        = 'cloverly'
-  s.version     = '0.0.1'
-  s.date        = '2019-05-07'
-  s.summary     = "Ruby library for interaciton with Cloverly API"
-  s.description = "Cloverly API powers API offsets via an API"
+  s.version     = '0.0.4'
+  s.date        = Time.now.strftime("%Y-%m-%d")
+  s.summary     = "Ruby library for interaction with Cloverly API"
+  s.description = "Cloverly API powers carbon offsets via an API"
   s.authors     = ["Chris Winslett"]
   s.email       = 'chris@cloverly.com'
-  s.files       = ["lib/cloverly.rb"]
+  s.files       = Dir["lib/**/*.rb"]
   s.homepage    = 'https://cloverly.com'
   s.license     = 'MIT'
 
-  s.add_runtime_dependency "nokogiri"
-  s.add_runtime_dependency "faraday"
+  s.add_dependency('nokogiri', '>= 1.6', '< 2.0')
+  s.add_dependency('faraday', '~>0.9')
 
   s.add_development_dependency "rspec"
   s.add_development_dependency "guard"

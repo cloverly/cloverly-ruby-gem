@@ -4,6 +4,12 @@ module Cloverly::Base
     @cloverly_instance = cloverly_instance
   end
 
+  def attributes=(json)
+    json.each do |key, value|
+      self.define_singleton_method(key, -> { value })
+    end
+  end
+
   def self.included(base)
     base.extend ClassMethods
     base.class_eval do
@@ -11,17 +17,18 @@ module Cloverly::Base
   end
 
   module ClassMethods
-    def parse(clovery_instance, json_response)
-      instance = self.new(clovery_instance)
+    def parse(cloverly_instance, json_response)
 
-      json_response.each do |key, value|
-        instance.define_singleton_method(key, -> { value })
+      if json_response.is_a?(Array)
+        json_response.map do |item_json|
+          self.parse(cloverly_instance, item_json)
+        end
+      else
+        instance = self.new(cloverly_instance)
+        instance.attributes = json_response
+
+        instance
       end
-
-      instance
-    rescue
-      debugger
-      raise $!
     end
   end
 

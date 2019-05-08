@@ -25,14 +25,14 @@ describe Cloverly do
     end
 
     it "estimate a shipping offset" do
-      estimate = @cloverly.offset("shipping", {weight: {value: 34, units: "kg"}, from: {zip: "94043"}, to: {zip: "35209"}})
+      estimate = @cloverly.estimate_offset("shipping", {weight: {value: 34, units: "kg"}, from: {zip: "94043"}, to: {zip: "35209"}})
 
       expect(estimate).to be_kind_of(Cloverly::Estimate)
       expect(estimate.total_cost_in_usd_cents).to eq(32)
     end
 
     it "allows completion of estimates" do
-      estimate = @cloverly.offset("shipping", {weight: {value: 2, units: "pounds"}, from: {zip: "94043"}, to: {zip: "35209"}})
+      estimate = @cloverly.estimate_offset("shipping", {weight: {value: 2, units: "pounds"}, from: {zip: "94043"}, to: {zip: "35209"}})
       expect(estimate.total_cost_in_usd_cents).to eq(27)
 
       purchase = estimate.purchase!
@@ -52,7 +52,7 @@ describe Cloverly do
     end
 
     it "offsets shipping" do
-      estimate = @cloverly.offset("shipping", {weight: {value: 34, units: "kg"}, from: {zip: "94043"}, to: {zip: "35209"}})
+      estimate = @cloverly.estimate_offset("shipping", {weight: {value: 34, units: "kg"}, from: {zip: "94043"}, to: {zip: "35209"}})
 
       expect(estimate).to be_kind_of(Cloverly::Estimate)
       expect(estimate.total_cost_in_usd_cents).to eq(32)

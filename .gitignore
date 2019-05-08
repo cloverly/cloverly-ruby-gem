@@ -1,2 +1,5 @@
 .env
 .byebug_history
+doc/*
+*.gem
+.ruby-version

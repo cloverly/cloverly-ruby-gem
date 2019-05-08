@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    cloverly (0.0.1)
-      faraday
-      nokogiri
+    cloverly (0.0.4)
+      faraday (~> 0.9)
+      nokogiri (>= 1.6, < 2.0)
 
 GEM
   remote: http://www.rubygems.org/
