@@ -10,6 +10,14 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://cloverly.com'
   s.license     = 'MIT'
 
+  s.metadata = {
+    "source_code_uri" => "https://github.com/cloverly/cloverly-ruby-gem",
+    "bug_tracker_uri" => "https://github.com/cloverly/cloverly-ruby-gem/issues"
+  }
+
+  s.required_ruby_version     = ">= 2.5.0"
+  s.required_rubygems_version = ">= 1.8.11"
+
   s.add_dependency('nokogiri', '>= 1.6', '< 2.0')
   s.add_dependency('faraday', '~>0.9')
 
