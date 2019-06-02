@@ -28,16 +28,16 @@ describe Cloverly do
       estimate = @cloverly.estimate_offset("shipping", {weight: {value: 34, units: "kg"}, from: {zip: "94043"}, to: {zip: "35209"}})
 
       expect(estimate).to be_kind_of(Cloverly::Estimate)
-      expect(estimate.total_cost_in_usd_cents).to eq(32)
+      expect(estimate.total_cost_in_usd_cents).to be_kind_of(Integer)
     end
 
     it "allows completion of estimates" do
       estimate = @cloverly.estimate_offset("shipping", {weight: {value: 2, units: "pounds"}, from: {zip: "94043"}, to: {zip: "35209"}})
-      expect(estimate.total_cost_in_usd_cents).to eq(27)
+      expect(estimate.total_cost_in_usd_cents).to be_kind_of(Integer)
 
       purchase = estimate.purchase!
       expect(purchase).to be_kind_of(Cloverly::Purchase)
-      expect(estimate.total_cost_in_usd_cents).to eq(27)
+      expect(estimate.total_cost_in_usd_cents).to be_kind_of(Integer)
     end
   end
 
@@ -48,14 +48,14 @@ describe Cloverly do
 
     it "returns account information from cloverly" do
       account = @cloverly.account
-      expect(account.name).to eq("Cloverly")
+      expect(account.name).not_to be_nil
     end
 
     it "offsets shipping" do
       estimate = @cloverly.estimate_offset("shipping", {weight: {value: 34, units: "kg"}, from: {zip: "94043"}, to: {zip: "35209"}})
 
       expect(estimate).to be_kind_of(Cloverly::Estimate)
-      expect(estimate.total_cost_in_usd_cents).to eq(32)
+      expect(estimate.total_cost_in_usd_cents).to be_kind_of(Integer)
     end
   end
 

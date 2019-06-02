@@ -3,11 +3,11 @@ class Cloverly::Source
 
   class << self
     def retrieve(slug)
-      Cloverly::Source.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/recs/#{slug}"))
+      Cloverly::Source.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/offsets/#{slug}"))
     end
 
     def list
-      Cloverly::Source.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/recs"))
+      Cloverly::Source.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/offsets"))
     end
   end
 
