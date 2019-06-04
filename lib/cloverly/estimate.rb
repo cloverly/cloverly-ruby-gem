@@ -12,11 +12,13 @@ class Cloverly::Estimate
   class << self
 
     def retrieve(cloverly_instance = nil, slug)
-      Cloverly::Estimate.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/estimates/#{slug}"))
+      c = cloverly_instance || Cloverly.default
+      Cloverly::Estimate.parse(c, c.get("/2019-03-beta/estimates/#{slug}"))
     end
 
-    def list
-      Cloverly::Estimate.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/estimates/#{slug}"))
+    def list(cloverly_instance = nil)
+      c = cloverly_instance || Cloverly.default
+      Cloverly::Estimate.parse(c, c.get("/2019-03-beta/estimates"))
     end
 
     def shipping(args)

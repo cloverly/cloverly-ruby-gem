@@ -11,12 +11,14 @@ class Cloverly::Purchase
 
   class << self
 
-    def retrieve(slug)
-      Cloverly::Purchase.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/purchases/#{slug}"))
+    def retrieve(cloverly_instance = nil, slug)
+      c = cloverly_instance || Cloverly.default
+      Cloverly::Purchase.parse(c, c.get("/2019-03-beta/purchases/#{slug}"))
     end
 
-    def list
-      Cloverly::Purchase.parse(Cloverly.default, Cloverly.default.get("/2019-03-beta/purchases/#{slug}"))
+    def list(cloverly_instance = nil)
+      c = cloverly_instance || Cloverly.default
+      Cloverly::Purchase.parse(c, c.get("/2019-03-beta/purchases"))
     end
 
     def shipping(args)
