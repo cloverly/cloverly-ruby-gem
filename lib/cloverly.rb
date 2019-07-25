@@ -93,7 +93,7 @@ class Cloverly
 
   private
   def conn
-    @conn ||= Faraday.new(:url => ENV['CLOVERLY_API_URL'] || 'https://api.cloverly.app')
+    @conn ||= Faraday.new(:url => ENV['CLOVERLY_API_URL'] || 'https://api.cloverly.com')
   end
 end
 
