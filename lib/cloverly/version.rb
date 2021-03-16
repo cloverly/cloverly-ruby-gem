@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module Cloverly
+class Cloverly
   VERSION = '0.1.2'
 end
