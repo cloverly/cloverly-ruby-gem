@@ -1,0 +1,25 @@
+---
+name: continuous
+on: pull_request
+jobs:
+  test:
+    env:
+      BUILD_VERSION: 0.1.2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bundle exec rspec
+        env:
+          CLOVERLY_API_URL: ${{ secrets.CLOVERLY_API_URL }}
+          CLOVERLY_PUBLIC_KEY: ${{ secrets.CLOVERLY_PUBLIC_KEY }}
+          CLOVERLY_PRIVATE_KEY: ${{ secrets.CLOVERLY_PRIVATE_KEY }}
+    strategy:
+      matrix:
+        ruby:
+          - 2.5
+          - 2.6
+          - 2.7
