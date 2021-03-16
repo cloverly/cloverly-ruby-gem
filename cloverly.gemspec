@@ -3,7 +3,6 @@ require_relative 'lib/cloverly/version'
 Gem::Specification.new do |s|
   s.name        = 'cloverly'
   s.version     = ::Cloverly::VERSION
-  s.date        = Time.now.strftime("%Y-%m-%d")
   s.summary     = "Ruby library for interaction with Cloverly API"
   s.description = "Cloverly API powers carbon offsets via an API"
   s.authors     = ["Chris Winslett"]
