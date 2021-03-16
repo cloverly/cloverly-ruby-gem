@@ -1,5 +1,8 @@
-.env
-.byebug_history
-doc/*
 *.gem
+*.swp
+.bundle
+.byebug_history
+.env
 .ruby-version
+doc
+vendor
