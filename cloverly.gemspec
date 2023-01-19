@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = ">= 2.5.0"
   s.required_rubygems_version = ">= 1.8.11"
 
-  s.add_dependency('faraday', '>=0.9', '<2.0')
+  s.add_dependency('faraday', '>=0.9', '<3.0')
 
   s.add_development_dependency "rspec"
   s.add_development_dependency "guard"
